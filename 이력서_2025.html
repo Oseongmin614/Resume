@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>오성민 이력서</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        font-family: 'Noto Sans KR', sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        line-height: 1.6;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    .page {
+        width: 210mm;
+        min-height: 297mm;
+        padding: 20mm;
+        margin: 10mm auto;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 24px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 24px;
+    }
+    .header img {
+        width: 110px;
+        height: 140px;
+        object-fit: cover;
+        margin-right: 24px;
+        border: 1px solid #ddd;
+    }
+    .header-text h1 {
+        font-size: 28px;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 4px;
+    }
+    .header-text h2 {
+        font-size: 18px;
+        font-weight: 500;
+        color: #3498db;
+    }
+    .main-content {
+        display: flex;
+        gap: 30px;
+    }
+    .left-column {
+        width: 35%;
+    }
+    .right-column {
+        width: 65%;
+    }
+    section {
+        margin-bottom: 20px;
+    }
+    h3 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 6px;
+        margin-bottom: 12px;
+    }
+    .contact-info p, .skills-info ul li, .cert-info ul li {
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+    .contact-info strong {
+        display: inline-block;
+        width: 60px;
+        font-weight: 500;
+    }
+    .skills-info ul, .cert-info ul {
+        list-style: none;
+    }
+    .project, .strength, .education-item {
+        margin-bottom: 16px;
+    }
+    h4 {
+        font-size: 14px;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 4px;
+    }
+    .project-meta {
+        font-size: 12px;
+        color: #7f8c8d;
+        margin-bottom: 6px;
+        font-weight: 500;
+    }
+    .project p, .strength p, .education-item p {
+        font-size: 13px;
+        color: #555;
+    }
+    @media print {
+        body, .page {
+            margin: 0;
+            box-shadow: none;
+        }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <header class="header">
+    <img src="oseongmin.jpg" alt="오성민 증명사진">
+    <div class="header-text">
+      <h1>오성민</h1>
+      <h2>Data Engineer</h2>
+    </div>
+  </header>
+
+  <div class="main-content">
+    <aside class="left-column">
+      <section class="contact-info">
+        <h3>CONTACT</h3>
+        <p><strong>이메일</strong> ohseongmin0614@gmail.com</p>
+        <p><strong>연락처</strong> 010-5597-5981</p>
+        <p><strong>GitHub</strong> github.com/Oseongmin614</p>
+        <p><strong>생년월일</strong> 1997.06.14</p>
+      </section>
+      <section class="skills-info">
+        <h3>기술 스택</h3>
+        <ul>
+          <li><b>Frontend:</b> JavaScript, HTML/CSS, React, Redux, Tailwindcss</li>
+          <li><b>Backend:</b> JAVA, Python, Node.js, Rest API, FastAPI, Apache Tomcat</li>
+          <li><b>Data/ML:</b> Pytorch, HuggingFace, MySQL</li>
+          <li><b>Tools:</b> Git, GitHub, Firebase</li>
+        </ul>
+      </section>
+      <section class="cert-info">
+        <h3>자격증</h3>
+        <ul>
+          <li>정보처리기사</li>
+          <li>SQLD</li>
+          <li>자동차운전면허증 1종보통</li>
+          <li>ADSP</li>
+        </ul>
+      </section>
+    </aside>
+
+    <main class="right-column">
+      <section class="projects">
+        <h3>PROJECTS</h3>
+        <div class="project">
+          <h4>SNS_Web</h4>
+          <p class="project-meta">2025.06 ~ 2025.07</p>
+          <p>Spring 프레임워크를 활용하여 SNS 서비스를 개발했습니다. 백엔드 개발을 담당했으며, 무한 스크롤 및 실시간 데이터 처리 기능을 구현했습니다.</p>
+        </div>
+        <div class="project">
+          <h4>약속도우미 어플리케이션</h4>
+          <p class="project-meta">2025.05 - 2025.07</p>
+          <p>창의적 융합 프로젝트로 진행된 약속 도우미 모바일 앱 개발 프로젝트입니다. 약속 시간에 맞춰 출발을 돕는 실시간 위치 공유 기반 알림 앱으로, 로그인, 회원가입, 채팅, DB 관리를 전담했습니다.</p>
+        </div>
+        <div class="project">
+          <h4>JAVA 콘솔 영화 예매 시스템</h4>
+          <p class="project-meta">2025.05</p>
+          <p>회원가입, 영화 목록 조회, 영화관 좌석 조회, 영화 예매 기능을 제공하는 콘솔 프로그램입니다.</p>
+        </div>
+        <div class="project">
+          <h4>Qube_Web</h4>
+          <p class="project-meta">2025.05</p>
+          <p>JavaScript를 활용하여 큐브 게임을 개발했습니다. 사용자가 키보드 조작을 통해 실제 큐브를 맞추는 듯한 경험을 제공하며, 보이는 면 3개와 보이지 않는 면 3개의 계산을 통해 조작감을 구현했습니다. 또한, 로컬 스토리지를 활용한 랭킹 시스템을 통해 사용자별 맞춤 속도 순위를 제공합니다.</p>
+        </div>
+        <div class="project">
+          <h4>자연어처리를 이용한 감정분석 SNS</h4>
+          <p class="project-meta">2019.03 - 2019.05</p>
+          <p>졸업 작품으로 진행된 사용자 감정 분석 모바일 앱 개발 프로젝트입니다. SNS 앱 사용자의 자연어 입력을 전처리하여 감정을 분석하고, 분석된 감정 상태를 앱을 통해 제공합니다. 데이터 분석 및 자연어 처리 부분을 전담하여 개발했습니다.</p>
+        </div>
+      </section>
+
+      <section class="strengths">
+        <h3>강점</h3>
+        <div class="strength">
+          <h4>꾸준함과 성실함</h4>
+          <p>매일 GitHub 커밋을 실천하며 학습 습관을 만들고, 20살 이후 경제적 자립을 위해 주어진 업무를 책임감 있게 수행하며 조직의 원활한 운영에 기여했습니다.</p>
+        </div>
+        <div class="strength">
+          <h4>체계적인 목표 관리와 실행력</h4>
+          <p>3회의 마라톤 완주 (최고기록 3:45) 경험을 통해 목표 설정부터 월 150km 이상의 훈련량 실행까지, 체계적인 계획과 꾸준한 실행력을 입증했습니다. 이는 프로젝트의 마일스톤 관리에도 긍정적으로 기여합니다.</p>
+        </div>
+        <div class="strength">
+          <h4>소통과 협업 능력</h4>
+          <p>대학 시절 동아리 대표를 맡아 개인적인 소통으로 동아리원의 참여를 이끌어낸 경험과, 융합 프로젝트에서 GitHub를 활용하여 버전 관리를 주도하며 효율적인 협업을 이끈 경험이 있습니다.</p>
+        </div>
+        <div class="strength">
+          <h4>문제 해결 및 성장 마인드</h4>
+          <p>과거 '일머리가 부족하다'는 피드백을 성장의 기회로 삼아, 과제를 작은 단위로 나누고 우선순위를 설정하는 방식으로 업무 효율을 개선했습니다. 기술적 난관에 부딪혔을 때 포기하지 않고 해결책을 찾는 끈기를 가지고 있습니다.</p>
+        </div>
+      </section>
+
+      <section class="education">
+        <h3>학력</h3>
+        <div class="education-item">
+          <h4>한국폴리텍대학 성남캠퍼스</h4>
+          <p>하이테크과정 인공지능과 (2025.03 - 수료예정)</p>
+        </div>
+        <div class="education-item">
+          <h4>협성대학교</h4>
+          <p>컴퓨터공학과 (2016.03 - 2023.02) / 학점: 2.82/4.5</p>
+        </div>
+        <div class="education-item">
+          <h4>성일정보고등학교</h4>
+          <p>디지털정보과 (2013.03 - 2016.02)</p>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+</body>
+</html>
