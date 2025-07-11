@@ -1,0 +1,575 @@
+/* ==================================
+   수정된 이력서 CSS - 애니메이션 제거 버전
+   ================================== */
+
+/* 1. CSS 변수 정의 - 필수 변수만 유지 */
+:root {
+  /* 핵심 색상 시스템 */
+  --color-background: #F5F5DC;
+  --color-surface: #FFFAF0;
+  --color-text: #5D4037;
+  --color-text-secondary: #8D6E63;
+  --color-primary: #556B2F;
+  --color-primary-hover: #6B8E23;
+  --color-secondary: rgba(85, 107, 47, 0.1);
+  --color-border: rgba(85, 107, 47, 0.2);
+  --color-success: #556B2F;
+
+  /* 타이포그래피 */
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* 간격 시스템 */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+
+  /* 기타 */
+  --radius-base: 8px;
+  --radius-lg: 12px;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
+  --transition-fast: 0.15s ease-out;
+  --transition-normal: 0.25s ease-out;
+}
+
+/* 2. 기본 스타일 리셋 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 3. 타이포그래피 */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  margin-bottom: var(--space-16);
+}
+
+h1 { font-size: var(--font-size-4xl); }
+h2 { font-size: var(--font-size-3xl); }
+h3 { font-size: var(--font-size-2xl); }
+h4 { font-size: var(--font-size-xl); }
+h5 { font-size: var(--font-size-lg); }
+
+p {
+  margin-bottom: var(--space-16);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+/* 4. 레이아웃 컨테이너 */
+.resume-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--color-background);
+  min-height: 100vh;
+}
+
+/* 5. 헤더 섹션 */
+.header {
+  background-color: var(--color-surface);
+  border-bottom: 2px solid var(--color-primary);
+  padding: var(--space-32) 0; /* 좌우 패딩 제거 */
+  box-shadow: var(--shadow-sm);
+  height: 380px; /* 헤더 높이를 고정하여 애니메이션 효과 개선 */
+}
+
+.header-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  width: 100%; /* 부모 요소의 전체 너비 사용 */
+  padding: 0 var(--space-24); /* 내용에 좌우 패딩 추가 */
+  margin: 0 auto;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: var(--space-24);
+}
+
+/* 프로필 사진 스타일 복원 */
+.profile-image-actual {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: contain; /* contain으로 수정하여 이미지 전체가 보이도록 함 */
+  border: 4px solid var(--color-primary); /* 올리브색 테두리 추가 */
+  box-shadow: none;
+  background-color: white; /* 흰색 배경 추가 */
+}
+
+.profile-info .name {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin-bottom: var(--space-8);
+}
+
+.profile-info .name-en {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+.profile-info .birth-year {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-8);
+}
+
+.profile-info .title {
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* 6. 연락처 정보 */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  min-width: 300px;
+}
+
+.contact-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-8) var(--space-12);
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-base);
+  transition: all var(--transition-fast);
+  border-left: 4px solid var(--color-primary);
+}
+
+.contact-item:hover {
+  background-color: var(--color-secondary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-label {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+}
+
+.contact-value {
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+  transition: color var(--transition-fast);
+}
+
+.contact-value:hover {
+  color: var(--color-primary-hover);
+}
+
+/* 7. 네비게이션 */
+.navigation {
+  position: sticky;
+  top: 0;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-content {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-32);
+  padding: var(--space-16) var(--space-24);
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  padding: var(--space-8) var(--space-16);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-base);
+  transition: all var(--transition-fast);
+  position: relative;
+  outline: none;
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+  background-color: var(--color-secondary);
+}
+
+.nav-link.active {
+  color: white;
+  background-color: var(--color-primary);
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* 8. 메인 콘텐츠 */
+.main-content {
+  padding: var(--space-24);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.section {
+  margin-bottom: var(--space-32);
+  padding: var(--space-32);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+}
+
+.section-header {
+  margin-bottom: var(--space-24);
+  text-align: center;
+}
+
+.section-title {
+  font-size: var(--font-size-3xl);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--color-primary);
+  border-radius: 2px;
+}
+
+/* 9. 요약 섹션 */
+/* 9. 요약 섹션 */
+.summary-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #5D4037;
+    font-weight: 500;
+    text-align: center;
+    max-width: 800px;
+    margin: 24px auto 0;
+}
+
+.summary {
+    padding: 20px;
+    text-align: center;
+}
+
+.goals-grid {
+  display: grid;
+  gap: var(--space-24);
+  margin-top: var(--space-24);
+}
+
+.goal-item {
+  padding: var(--space-20);
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-base);
+  border-left: 4px solid var(--color-primary);
+}
+
+.goal-item h4 {
+  color: var(--color-primary);
+  margin-bottom: var(--space-16);
+}
+
+.goal-item ul {
+  list-style: none;
+  padding: 0;
+}
+
+.goal-item li {
+  padding: var(--space-8) 0;
+  position: relative;
+  padding-left: var(--space-20);
+  color: var(--color-text);
+}
+
+.goal-item li::before {
+  content: '•';
+  color: var(--color-primary);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+/* Skills Section */
+.skills-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-16); /* 간격 증가 */
+  justify-content: center; /* 중앙 정렬 */
+  padding: var(--space-24) var(--space-20); /* 위아래 패딩 수정 */
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-base);
+  border: 1px solid var(--color-border);
+}
+
+.tech-tag {
+  background-color: var(--color-primary);
+  color: white;
+  padding: var(--space-8) var(--space-16);
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  transition: background-color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.tech-tag:hover {
+  background-color: var(--color-primary-hover);
+}
+
+/* 10. 프로젝트 섹션 */
+.projects-grid {
+  display: grid;
+  gap: var(--space-24);
+}
+
+.project-card {
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-base);
+  padding: var(--space-24);
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  position: relative;
+  outline: none;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+}
+
+.project-card:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-12);
+  gap: var(--space-16);
+}
+
+.project-title {
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: 0;
+}
+
+.project-period {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  background-color: var(--color-surface);
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-base);
+  white-space: nowrap;
+}
+
+.project-description {
+  color: var(--color-text);
+  line-height: 1.6;
+  margin-bottom: var(--space-16);
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  margin-bottom: var(--space-16);
+}
+
+.tech-tag {
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border: 1px solid var(--color-border);
+}
+
+.project-details {
+  margin-top: var(--space-16);
+  padding-top: var(--space-16);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text);
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.project-card.expanded .project-details {
+  opacity: 1;
+  max-height: 300px;
+}
+
+/* 11. 기타 섹션들 */
+.education-content,
+.certifications-content,
+.strengths-content {
+  display: grid;
+  gap: var(--space-24);
+}
+
+.education-item,
+.certification-item {
+  background-color: var(--color-secondary);
+  padding: var(--space-20);
+  border-radius: var(--radius-base);
+  border-left: 4px solid var(--color-primary);
+  transition: transform var(--transition-fast);
+  display: flex; /* 추가 */
+  justify-content: space-between; /* 추가 */
+  align-items: center; /* 추가 */
+  flex-wrap: wrap; /* 추가 */
+}
+
+.certification-meta {
+  text-align: right; /* 오른쪽 정렬 */
+}
+
+.certification-issuer {
+  margin-bottom: var(--space-4); /* 인증기관과 날짜 사이 여백 */
+}
+
+.strength-item {
+  background-color: var(--color-secondary);
+  padding: var(--space-20);
+  border-radius: var(--radius-base);
+  border-left: 4px solid var(--color-primary);
+  transition: transform var(--transition-fast);
+  display: flex; /* 추가 */
+  justify-content: space-between; /* 추가 */
+  align-items: center; /* 추가 */
+  flex-wrap: wrap; /* 추가 */
+}
+
+.education-item:hover,
+.certification-item:hover,
+.strength-item:hover {
+  transform: translateY(-2px);
+}
+
+/* 12. 반응형 디자인 */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: var(--space-24);
+  }
+
+  .profile-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contact-info {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .nav-content {
+    gap: var(--space-16);
+  }
+
+  .main-content {
+    padding: var(--space-16);
+  }
+
+.section {
+    margin-bottom: var(--space-32);
+    padding: var(--space-16); /* 기존 var(--space-32)에서 줄임 */
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+}
+
+  .project-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* 13. 접근성 및 포커스 스타일 */
+.keyboard-navigation *:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* 14. 프린트 스타일 */
+@media print {
+  .navigation {
+    display: none;
+  }
+
+  .project-card {
+    page-break-inside: avoid;
+  }
+
+  .project-details {
+    opacity: 1;
+    max-height: none;
+  }
+}
