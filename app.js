@@ -1,5 +1,5 @@
 /* ==================================
-   수정된 이력서 JavaScript - 애니메이션 제거 버전
+   수정된 이력서 JavaScript - 애니메이션 추가 버전
    ================================== */
 
 // 1. 설정 및 상수
@@ -176,93 +176,23 @@ class Navigation {
 }
 
 // 4. 프로젝트 카드 관리
-class ProjectManager {
+
+
+// 5. 애니메이션 관리
+class AnimationManager {
   constructor() {
-    this.projectCards = Utils.$$('.project-card');
+    this.summaryLines = Utils.$$('.summary-line');
     this.init();
   }
 
   init() {
-    this.bindEvents();
-    this.setupAccessibility();
+    this.animateSummaryLines();
   }
 
-  bindEvents() {
-    const container = Utils.$('.projects-grid');
-    if (container) {
-      Utils.addEvent(container, 'click', (e) => {
-        const card = e.target.closest('.project-card');
-        if (card) {
-          this.toggleCard(card);
-        }
-      });
-
-      Utils.addEvent(container, 'keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          const card = e.target.closest('.project-card');
-          if (card) {
-            e.preventDefault();
-            this.toggleCard(card);
-          }
-        }
-      });
-    }
-  }
-
-  toggleCard(card) {
-    const isExpanded = card.classList.contains('expanded');
-    
-    this.projectCards.forEach(otherCard => {
-      if (otherCard !== card) {
-        otherCard.classList.remove('expanded');
-        otherCard.setAttribute('aria-expanded', 'false');
-      }
+  animateSummaryLines() {
+    this.summaryLines.forEach((line, index) => {
+      line.style.animationDelay = `${index * 0.2}s`;
     });
-
-    Utils.toggleClass(card, 'expanded');
-    card.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
-
-    const title = card.querySelector('.project-title').textContent;
-    const message = isExpanded ? `${title} 프로젝트 상세 정보 숨김` : `${title} 프로젝트 상세 정보 표시`;
-    
-    this.announceToScreenReader(message);
-  }
-
-  setupAccessibility() {
-    this.projectCards.forEach(card => {
-      card.setAttribute('tabindex', '0');
-      card.setAttribute('role', 'button');
-      card.setAttribute('aria-expanded', 'false');
-      
-      const title = card.querySelector('.project-title').textContent;
-      card.setAttribute('aria-label', `${title} 프로젝트 상세 정보 토글`);
-    });
-  }
-
-  announceToScreenReader(message) {
-    const announcement = document.createElement('div');
-    announcement.setAttribute('aria-live', 'polite');
-    announcement.setAttribute('aria-atomic', 'true');
-    announcement.className = 'sr-only';
-    announcement.textContent = message;
-    
-    document.body.appendChild(announcement);
-    
-    setTimeout(() => {
-      if (document.body.contains(announcement)) {
-        document.body.removeChild(announcement);
-      }
-    }, 1000);
-  }
-}
-
-// 5. 애니메이션 관리 (기능 비활성화)
-class AnimationManager {
-  constructor() {
-    // 애니메이션 기능을 사용하지 않음
-  }
-  init() {
-    // 초기화 코드를 비워둠
   }
 }
 
@@ -433,8 +363,8 @@ class ResumeApp {
   initializeComponents() {
     try {
       this.components.navigation = new Navigation();
-      this.components.projectManager = new ProjectManager();
-      this.components.animationManager = new AnimationManager(); // 애니메이션 기능 비활성화됨
+      
+      this.components.animationManager = new AnimationManager();
       this.components.accessibilityManager = new AccessibilityManager();
       this.components.contactManager = new ContactManager();
       this.components.printManager = new PrintManager();

@@ -110,7 +110,7 @@ a:hover {
   border-bottom: 2px solid var(--color-primary);
   padding: var(--space-32) 0; /* 좌우 패딩 제거 */
   box-shadow: var(--shadow-sm);
-  height: 380px; /* 헤더 높이를 고정하여 애니메이션 효과 개선 */
+  /* height: 380px; */ /* 헤더 높이 고정 제거 */
 }
 
 .header-content {
@@ -293,15 +293,28 @@ a:hover {
 }
 
 /* 9. 요약 섹션 */
-/* 9. 요약 섹션 */
 .summary-text {
     font-size: 16px;
     line-height: 1.6;
     color: #5D4037;
     font-weight: 500;
-    text-align: center;
+    text-align: left;
     max-width: 800px;
     margin: 24px auto 0;
+}
+
+.summary-line {
+    display: block;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .summary {
@@ -386,7 +399,7 @@ a:hover {
   padding: var(--space-24);
   border: 1px solid var(--color-border);
   transition: all var(--transition-normal);
-  cursor: pointer;
+  /* cursor: pointer; */
   position: relative;
   outline: none;
 }
@@ -454,16 +467,10 @@ a:hover {
   padding-top: var(--space-16);
   border-top: 1px solid var(--color-border);
   color: var(--color-text);
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
   transition: all var(--transition-normal);
 }
 
-.project-card.expanded .project-details {
-  opacity: 1;
-  max-height: 300px;
-}
+/* .project-card.expanded .project-details is no longer needed */
 
 /* 11. 기타 섹션들 */
 .education-content,
@@ -572,4 +579,66 @@ a:hover {
     opacity: 1;
     max-height: none;
   }
+}
+
+
+/* 15. 추가된 스타일 */
+.info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.summary {
+    padding: 20px;
+    text-align: center;
+}
+
+.summary-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #5D4037;
+    font-weight: 500;
+    text-align: left;
+    max-width: 800px;
+    margin: 24px auto 0;
+}
+
+.goals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.goal-item {
+    background-color: #FFFAF0;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #556B2F;
+}
+
+.goal-item h4 {
+    color: #556B2F;
+    margin-bottom: 10px;
+}
+
+.goal-item ul {
+    list-style: none;
+    padding: 0;
+}
+
+.goal-item li {
+    padding: 5px 0;
+    position: relative;
+    padding-left: 20px;
+    color: #5D4037;
+}
+
+.goal-item li::before {
+    content: '•';
+    color: #556B2F;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
 }
